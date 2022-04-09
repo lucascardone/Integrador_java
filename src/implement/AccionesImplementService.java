@@ -104,27 +104,37 @@ public class AccionesImplementService {
     public void disparar(Armadura mark3, ArrayList<Objetos> objetos) {
 
         System.out.println("DISPARAR");
-        if(mark3.getGenerador()){
-            System.out.println("Disparando al enemigo mas cercano...");
-            comprobarDisparo(objetos);
-            consultarDistancia(null, objetos, mark3);
-        }
-        
+        System.out.println("Disparando al enemigo mas cercano...");
+        comprobarDisparo(objetos, mark3);
+        consultarDistancia(null, objetos, mark3);
+
     }
-    
-    public void comprobarDisparo(ArrayList<Objetos> objetos){
-        for (Objetos objeto : objetos) {
-            if(objeto.getHostil() && objeto.getDistancia() < 5000){
-                System.out.println("Enemigo "+objeto.getNombre()+" eliminado");
-                objetos.remove(objeto);
-                break;
-            }else if(objeto.getHostil() && objeto.getDistancia() > 5000){
-                System.out.println("Objetivo: "+objeto.getNombre()+" fuera de alcance");
+
+    public void comprobarDisparo(ArrayList<Objetos> objetos, Armadura mark3) {
+        if (mark3.getGenerador()) {
+            for (Objetos objeto : objetos) {
+                if (objeto.getHostil() && objeto.getDistancia() < 5000) {
+                    System.out.println("Enemigo " + objeto.getNombre() + " eliminado");
+                    objetos.remove(objeto);
+                    break;
+                } else if (objeto.getHostil() && objeto.getDistancia() > 5000) {
+                    System.out.println("Objetivo: " + objeto.getNombre() + " fuera de alcance");
+                }
+            }
+        } else {
+            for (Objetos objeto : objetos) {
+                if (objeto.getHostil() && objeto.getDistancia() < 5000) {
+                    System.out.println("Enemigo " + objeto.getNombre() + " eliminado");
+                    mark3.getGuantes().setEnergia(mark3.getNvlEnergia() - 10);
+                    objetos.remove(objeto);
+                    break;
+                } else if (objeto.getHostil() && objeto.getDistancia() > 5000) {
+                    System.out.println("Objetivo: " + objeto.getNombre() + " fuera de alcance");
+                }
             }
         }
+
     }
-    
-    
 
     public Integer comprobarMetros() throws IOException {
         boolean bandera = false;
@@ -163,27 +173,27 @@ public class AccionesImplementService {
                     System.out.println(objeto);
                 }
             }
-        }else if(enemigo != null && mark3.getGenerador()){
+        } else if (enemigo != null && mark3.getGenerador()) {
             for (Objetos objeto : objetos) {
                 if (objeto.getNombre().equalsIgnoreCase(enemigo)) {
-                    System.out.println(objeto+" eliminado");
+                    System.out.println(objeto + " eliminado");
                     objetos.remove(objeto);
                     bandera = true;
                     break;
                 }
             }
         }
-        if(enemigo == null && !mark3.getGenerador()){
+        if (enemigo == null && !mark3.getGenerador()) {
             for (Objetos objeto : objetos) {
-                if (objeto.getHostil()){
+                if (objeto.getHostil()) {
                     System.out.println(objeto);
                     mark3.getCasco().setEnergia(mark3.getCasco().getEnergia() - 5);
                 }
             }
-        }else if(enemigo != null && !mark3.getGenerador()){
+        } else if (enemigo != null && !mark3.getGenerador()) {
             for (Objetos objeto : objetos) {
                 if (objeto.getNombre().equalsIgnoreCase(enemigo)) {
-                    System.out.println(objeto+" eliminado");
+                    System.out.println(objeto + " eliminado");
                     objetos.remove(objeto);
                     mark3.getCasco().setEnergia(mark3.getCasco().getEnergia() - 20);
                     bandera = true;
@@ -191,8 +201,9 @@ public class AccionesImplementService {
                 }
             }
         }
-        if(!bandera && enemigo != null){
-            System.out.println("El enemigo: "+enemigo+" no se ha encontrado");
+        System.out.println("HOLI");
+        if (!bandera && enemigo != null) {
+            System.out.println("El enemigo: " + enemigo + " no se ha encontrado");
         }
     }
 }
