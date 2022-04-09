@@ -107,7 +107,7 @@ public class AccionesImplementService {
         if(mark3.getGenerador()){
             System.out.println("Disparando al enemigo mas cercano...");
             comprobarDisparo(objetos);
-            consultarDistancia(null, objetos);
+            consultarDistancia(null, objetos, mark3);
         }
         
     }
@@ -155,23 +155,44 @@ public class AccionesImplementService {
         return notas[(int) (Math.random() * 5)];
     }
 
-    public void consultarDistancia(String enemigo, ArrayList<Objetos> objetos) {
-        if (enemigo == null) {
+    public void consultarDistancia(String enemigo, ArrayList<Objetos> objetos, Armadura mark3) {
+        boolean bandera = false;
+        if (enemigo == null && mark3.getGenerador()) {
             for (Objetos objeto : objetos) {
                 if (objeto.getHostil()) {
                     System.out.println(objeto);
                 }
             }
-        } else {
+        }else if(enemigo != null && mark3.getGenerador()){
             for (Objetos objeto : objetos) {
                 if (objeto.getNombre().equalsIgnoreCase(enemigo)) {
                     System.out.println(objeto+" eliminado");
                     objetos.remove(objeto);
+                    bandera = true;
                     break;
-                } else {
-                    System.out.println("-El enemigo no se ha localizado-");
                 }
             }
+        }
+        if(enemigo == null && !mark3.getGenerador()){
+            for (Objetos objeto : objetos) {
+                if (objeto.getHostil()){
+                    System.out.println(objeto);
+                    mark3.getCasco().setEnergia(mark3.getCasco().getEnergia() - 5);
+                }
+            }
+        }else if(enemigo != null && !mark3.getGenerador()){
+            for (Objetos objeto : objetos) {
+                if (objeto.getNombre().equalsIgnoreCase(enemigo)) {
+                    System.out.println(objeto+" eliminado");
+                    objetos.remove(objeto);
+                    mark3.getCasco().setEnergia(mark3.getCasco().getEnergia() - 20);
+                    bandera = true;
+                    break;
+                }
+            }
+        }
+        if(!bandera && enemigo != null){
+            System.out.println("El enemigo: "+enemigo+" no se ha encontrado");
         }
     }
 }

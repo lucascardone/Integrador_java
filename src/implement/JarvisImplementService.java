@@ -76,9 +76,9 @@ public class JarvisImplementService {
                     if (opcion.equalsIgnoreCase("si")) {
                         System.out.println("Nombre del objetivo ej(a1)");
                         objetivo = br.readLine();
-                        accServ.consultarDistancia(objetivo, objetos);
+                        accServ.consultarDistancia(objetivo, objetos, mark3);
                     } else {
-                        accServ.consultarDistancia(objetivo, objetos);
+                        accServ.consultarDistancia(objetivo, objetos, mark3);
                     }
                     break;
                 case 8:
@@ -183,7 +183,7 @@ public class JarvisImplementService {
                     + "3: Propulsarse.\n"
                     + "4: Volar.\n"
                     + "5: Disparar.\n"
-                    + "6: Consejo.\n"
+                    + "6: Esperar.\n"
                     + "7: Consultar distancia de hostiles.\n"
                     + "8: Escapar.\n"
                     + "9: Apagar generador\n"
