@@ -5,3 +5,5 @@ Program that simulates the use of an Iron Man armor
 - [ ] Improve decisions
 ## Observations
 Works well for now...
+## Updates
+- [X]  method "consultarDistancia" -> consumes energy from the helmet
