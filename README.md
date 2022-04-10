@@ -8,5 +8,5 @@ Works well for now...
 ## Updates
 - [X] method "consultarDistancia" -> consumes energy from the helmet
 - [x] method "comprobarDisparo" ->  consumes energy from the gloves
-- [x] class "AccionesImplementService" -> limited the use of energy in all actions of the armor
+- [x] class "AccionesImplementService" -> limited the use of energy in all methods of the class
 - [x] package -> new package added -> constants -> Class: Constant
