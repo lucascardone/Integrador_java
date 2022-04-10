@@ -4,6 +4,7 @@ Program that simulates the use of an Iron Man armor
 - [ ] Add new Radar
 - [ ] Improve decisions
 - [ ] Improve enemies
+- [ ] Order code
 ## Observations
 Works well for now...
 ## Updates
