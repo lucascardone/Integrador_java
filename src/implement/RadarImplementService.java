@@ -22,7 +22,7 @@ public class RadarImplementService {
         int cantidad = (int) (Math.random()*10);
         for (int i = 0; i < cantidad; i++) {
             int nvlResis = random.nextInt(NvlResistencia.values().length);
-            objetos.add(new Objetos(random.nextBoolean(), (int)(Math.random()*10000), letra.concat(String.valueOf(i)), NvlResistencia.values()[nvlResis]));
+            objetos.add(new Objetos(random.nextBoolean(), (int)(Math.random()*10000), letra.concat(String.valueOf(i)), NvlResistencia.values()[nvlResis], 100));
         }
         return objetos;
     }

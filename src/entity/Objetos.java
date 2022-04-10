@@ -16,17 +16,27 @@ public class Objetos {
     private Integer distancia;
     private String nombre;
     private NvlResistencia nvlResis;
+    private Integer salud;
 
     public Objetos() {
     }
 
-    public Objetos(Boolean hostil, Integer distancia, String nombre, NvlResistencia nvlResis) {
+    public Objetos(Boolean hostil, Integer distancia, String nombre, NvlResistencia nvlResis, Integer salud) {
         this.hostil = hostil;
         this.distancia = distancia;
         this.nombre = nombre;
         this.nvlResis = nvlResis;
+        this.salud = salud;
     }
 
+    public Integer getSalud() {
+        return salud;
+    }
+
+    public void setSalud(Integer salud) {
+        this.salud = salud;
+    }
+    
     public NvlResistencia getNvlResis() {
         return nvlResis;
     }
@@ -61,6 +71,6 @@ public class Objetos {
 
     @Override
     public String toString() {
-        return "Objetos{" + "hostil=" + hostil + ", distancia=" + distancia + ", nombre=" + nombre + ", nvlResis=" + nvlResis + '}';
+        return "Objetos{" + "hostil=" + hostil + ", distancia=" + distancia + ", nombre=" + nombre + ", nvlResis=" + nvlResis + ", salud=" + salud + '}';
     }
 }
