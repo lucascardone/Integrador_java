@@ -6,6 +6,7 @@ volar
  */
 package implement;
 
+import constants.Constant;
 import entity.Armadura;
 import entity.Objetos;
 import java.io.BufferedReader;
@@ -26,11 +27,26 @@ public class AccionesImplementService {
             return metros;
         } else {
             if (metros <= 1000) {
-                mark3.getBotas().setEnergia(mark3.getBotas().getEnergia() - 25);
+                if (mark3.getBotas().getEnergia() < 25) {
+                    System.out.println(Constant.accionDenegada);
+                    metros = 0;
+                } else {
+                    mark3.getBotas().setEnergia(mark3.getBotas().getEnergia() - 25);
+                }
             } else if (metros >= 1000 && metros <= 10000) {
-                mark3.getBotas().setEnergia(mark3.getNvlEnergia() - 50);
+                if (mark3.getBotas().getEnergia() < 50) {
+                    System.out.println(Constant.accionDenegada);
+                    metros = 0;
+                } else {
+                    mark3.getBotas().setEnergia(mark3.getBotas().getEnergia() - 50);
+                }
             } else if (metros > 10000) {
-                mark3.getBotas().setEnergia(mark3.getBotas().getEnergia() - 75);
+                if (mark3.getBotas().getEnergia() < 75) {
+                    System.out.println(Constant.accionDenegada);
+                    metros = 0;
+                } else {
+                    mark3.getBotas().setEnergia(mark3.getBotas().getEnergia() - 75);
+                }
             }
         }
         return metros;
@@ -45,11 +61,26 @@ public class AccionesImplementService {
             return metros;
         } else {
             if (metros <= 1000) {
-                mark3.getBotas().setEnergia(mark3.getBotas().getEnergia() - 50);
+                if (mark3.getBotas().getEnergia() < 50) {
+                    System.out.println(Constant.accionDenegada);
+                    metros = 0;
+                } else {
+                    mark3.getBotas().setEnergia(mark3.getBotas().getEnergia() - 50);
+                }
             } else if (metros >= 1000 && metros <= 10000) {
-                mark3.getBotas().setEnergia(mark3.getNvlEnergia() - 75);
+                if (mark3.getBotas().getEnergia() < 75) {
+                    System.out.println(Constant.accionDenegada);
+                    metros = 0;
+                } else {
+                    mark3.getBotas().setEnergia(mark3.getBotas().getEnergia() - 75);
+                }
             } else if (metros > 10000) {
-                mark3.getBotas().setEnergia(mark3.getBotas().getEnergia() - 100);
+                if (mark3.getBotas().getEnergia() < 100) {
+                    System.out.println(Constant.accionDenegada);
+                    metros = 0;
+                } else {
+                    mark3.getBotas().setEnergia(mark3.getBotas().getEnergia() - 100);
+                }
             }
         }
         return metros;
@@ -64,14 +95,29 @@ public class AccionesImplementService {
             return metros;
         } else {
             if (metros <= 1000) {
-                mark3.getBotas().setEnergia(mark3.getBotas().getEnergia() - 10);
-                mark3.getGuantes().setEnergia(mark3.getGuantes().getEnergia() - 5);
+                if (mark3.getBotas().getEnergia() < 10 && mark3.getGuantes().getEnergia() < 5) {
+                    System.out.println(Constant.accionDenegada);
+                    metros = 0;
+                } else {
+                    mark3.getBotas().setEnergia(mark3.getBotas().getEnergia() - 10);
+                    mark3.getGuantes().setEnergia(mark3.getGuantes().getEnergia() - 5);
+                }
             } else if (metros >= 1000 && metros <= 10000) {
-                mark3.getBotas().setEnergia(mark3.getNvlEnergia() - 25);
-                mark3.getGuantes().setEnergia(mark3.getGuantes().getEnergia() - 10);
+                if (mark3.getBotas().getEnergia() < 25 && mark3.getGuantes().getEnergia() < 10) {
+                    System.out.println(Constant.accionDenegada);
+                    metros = 0;
+                } else {
+                    mark3.getBotas().setEnergia(mark3.getBotas().getEnergia() - 25);
+                    mark3.getGuantes().setEnergia(mark3.getGuantes().getEnergia() - 10);
+                }
             } else if (metros > 10000) {
-                mark3.getBotas().setEnergia(mark3.getBotas().getEnergia() - 50);
-                mark3.getGuantes().setEnergia(mark3.getGuantes().getEnergia() - 15);
+                if (mark3.getBotas().getEnergia() < 50 && mark3.getGuantes().getEnergia() < 15) {
+                    System.out.println(Constant.accionDenegada);
+                    metros = 0;
+                } else {
+                    mark3.getBotas().setEnergia(mark3.getBotas().getEnergia() - 50);
+                    mark3.getGuantes().setEnergia(mark3.getGuantes().getEnergia() - 15);
+                }
             }
         }
         return metros;
@@ -87,14 +133,29 @@ public class AccionesImplementService {
             return metros;
         } else {
             if (metros <= 1000) {
-                mark3.getBotas().setEnergia(mark3.getBotas().getEnergia() - 20);
-                mark3.getGuantes().setEnergia(mark3.getGuantes().getEnergia() - 10);
+                if (mark3.getBotas().getEnergia() < 20 && mark3.getGuantes().getEnergia() < 10) {
+                    System.out.println(Constant.accionDenegada);
+                    metros = 0;
+                } else {
+                    mark3.getBotas().setEnergia(mark3.getBotas().getEnergia() - 20);
+                    mark3.getGuantes().setEnergia(mark3.getGuantes().getEnergia() - 10);
+                }
             } else if (metros >= 1000 && metros <= 10000) {
-                mark3.getBotas().setEnergia(mark3.getNvlEnergia() - 35);
-                mark3.getGuantes().setEnergia(mark3.getGuantes().getEnergia() - 20);
+                if (mark3.getBotas().getEnergia() < 35 && mark3.getGuantes().getEnergia() < 20) {
+                    System.out.println(Constant.accionDenegada);
+                    metros = 0;
+                } else {
+                    mark3.getBotas().setEnergia(mark3.getBotas().getEnergia() - 35);
+                    mark3.getGuantes().setEnergia(mark3.getGuantes().getEnergia() - 20);
+                }
             } else if (metros > 10000) {
-                mark3.getBotas().setEnergia(mark3.getBotas().getEnergia() - 60);
-                mark3.getGuantes().setEnergia(mark3.getGuantes().getEnergia() - 25);
+                if (mark3.getBotas().getEnergia() < 60 && mark3.getGuantes().getEnergia() < 25) {
+                    System.out.println(Constant.accionDenegada);
+                    metros = 0;
+                } else {
+                    mark3.getBotas().setEnergia(mark3.getBotas().getEnergia() - 60);
+                    mark3.getGuantes().setEnergia(mark3.getGuantes().getEnergia() - 25);
+                }
             }
         }
         return metros;
@@ -124,10 +185,15 @@ public class AccionesImplementService {
         } else {
             for (Objetos objeto : objetos) {
                 if (objeto.getHostil() && objeto.getDistancia() < 5000) {
-                    System.out.println("Enemigo " + objeto.getNombre() + " eliminado");
-                    mark3.getGuantes().setEnergia(mark3.getNvlEnergia() - 10);
-                    objetos.remove(objeto);
-                    break;
+                    if (mark3.getGuantes().getEnergia() < 10) {
+                        System.out.println(Constant.accionDenegada);
+                        break;
+                    } else {
+                        System.out.println("Enemigo " + objeto.getNombre() + " eliminado");
+                        mark3.getGuantes().setEnergia(mark3.getNvlEnergia() - 10);
+                        objetos.remove(objeto);
+                        break;
+                    }
                 } else if (objeto.getHostil() && objeto.getDistancia() > 5000) {
                     System.out.println("Objetivo: " + objeto.getNombre() + " fuera de alcance");
                 }
@@ -193,11 +259,17 @@ public class AccionesImplementService {
         } else if (enemigo != null && !mark3.getGenerador()) {
             for (Objetos objeto : objetos) {
                 if (objeto.getNombre().equalsIgnoreCase(enemigo)) {
-                    System.out.println(objeto + " eliminado");
-                    objetos.remove(objeto);
-                    mark3.getCasco().setEnergia(mark3.getCasco().getEnergia() - 20);
-                    bandera = true;
-                    break;
+                    if (mark3.getCasco().getEnergia() < 20 && mark3.getGuantes().getEnergia() < 10) {
+                        System.out.println(Constant.accionDenegada);
+                        break;
+                    } else {
+                        System.out.println(objeto + " eliminado");
+                        objetos.remove(objeto);
+                        mark3.getCasco().setEnergia(mark3.getCasco().getEnergia() - 20);
+                        mark3.getGuantes().setEnergia(mark3.getNvlEnergia() - 10);
+                        bandera = true;
+                        break;
+                    }
                 }
             }
         }

@@ -33,10 +33,10 @@ public class JarvisImplementService {
         String opcion;
         ArrayList<Objetos> objetos = new ArrayList();
         do {
-            System.out.println("Radar activado");
             if (i == 0) {
                 objetos = radServ.pulsoRadar();
             }
+            System.out.println("Radar activado");
             System.out.println("Numero de hostiles: " + hostiles(objetos));
             switch (opcionJarvis()) {
                 case 1:
@@ -107,7 +107,7 @@ public class JarvisImplementService {
                 mark3.setNvlEnergia(100);
                 mark3.getBotas().setEnergia(100);
                 mark3.getGuantes().setEnergia(100);
-            }else if(!mark3.getGenerador()){
+            } else if (!mark3.getGenerador()) {
                 generadorApagado(mark3);
             }
             mostrarEstado(mark3);
@@ -184,7 +184,7 @@ public class JarvisImplementService {
                     + "4: Volar.\n"
                     + "5: Disparar.\n"
                     + "6: Esperar.\n"
-                    + "7: Consultar distancia de hostiles.\n"
+                    + "7: Consultar distancia de hostiles o eliminar si se encuentran fuera de alcance(requiere nombre del objetivo).\n"
                     + "8: Escapar.\n"
                     + "9: Apagar generador\n"
                     + "10: Encender generador.\n");
@@ -207,6 +207,7 @@ public class JarvisImplementService {
         System.out.println("Armadura: " + mark3.getNvlEnergia() + "\n"
                 + "Botas: " + mark3.getBotas().getEnergia() + "\n"
                 + "Guantes: " + mark3.getGuantes().getEnergia() + "\n"
-                + "Casco: " + mark3.getCasco().getEnergia() + "\n");
+                + "Casco: " + mark3.getCasco().getEnergia() + "\n"
+                + "Generador: " + mark3.getGenerador() + "\n");
     }
 }
