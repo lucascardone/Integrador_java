@@ -12,4 +12,5 @@ Works well for now...
 - [x] Method "comprobarDisparo" ->  consumes energy from the gloves
 - [x] Class "AccionesImplementService" -> limited the use of energy in all methods of the class
 - [x] Package "constants" Class "Constant" -> added 
-- [x] Class "Objetos" -> attribute nvlResis added
+- [x] Class "Objetos" -> attribute "nvlResis" added
+- [x] Class "Objetos -> attribute "salud" added
