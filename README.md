@@ -10,4 +10,5 @@ Works well for now...
 - [X] Method "consultarDistancia" -> consumes energy from the helmet
 - [x] Method "comprobarDisparo" ->  consumes energy from the gloves
 - [x] Class "AccionesImplementService" -> limited the use of energy in all methods of the class
-- [x] Package -> new package added -> constants -> Class: Constant
+- [x] Package "constants" Class "Constant" -> added 
+- [x] Class "Objetos" -> attribute nvlResis added
