@@ -7,6 +7,7 @@
 package implement;
 
 import entity.Objetos;
+import enums.NvlResistencia;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -20,7 +21,8 @@ public class RadarImplementService {
         Random random = new Random();
         int cantidad = (int) (Math.random()*10);
         for (int i = 0; i < cantidad; i++) {
-            objetos.add(new Objetos(random.nextBoolean(), (int)(Math.random()*10000), letra.concat(String.valueOf(i))));
+            int nvlResis = random.nextInt(NvlResistencia.values().length);
+            objetos.add(new Objetos(random.nextBoolean(), (int)(Math.random()*10000), letra.concat(String.valueOf(i)), NvlResistencia.values()[nvlResis]));
         }
         return objetos;
     }

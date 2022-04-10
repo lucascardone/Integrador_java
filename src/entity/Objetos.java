@@ -6,6 +6,8 @@
 
 package entity;
 
+import enums.NvlResistencia;
+
 
 public class Objetos {
 
@@ -13,14 +15,24 @@ public class Objetos {
     private Boolean hostil;
     private Integer distancia;
     private String nombre;
+    private NvlResistencia nvlResis;
 
     public Objetos() {
     }
 
-    public Objetos(Boolean hostil, Integer distancia, String nombre) {
+    public Objetos(Boolean hostil, Integer distancia, String nombre, NvlResistencia nvlResis) {
         this.hostil = hostil;
         this.distancia = distancia;
         this.nombre = nombre;
+        this.nvlResis = nvlResis;
+    }
+
+    public NvlResistencia getNvlResis() {
+        return nvlResis;
+    }
+
+    public void setNvlResis(NvlResistencia nvlResis) {
+        this.nvlResis = nvlResis;
     }
 
     public String getNombre() {
@@ -49,9 +61,6 @@ public class Objetos {
 
     @Override
     public String toString() {
-        return "Objetos{" + "hostil=" + hostil + ", distancia=" + distancia + ", nombre=" + nombre + '}';
+        return "Objetos{" + "hostil=" + hostil + ", distancia=" + distancia + ", nombre=" + nombre + ", nvlResis=" + nvlResis + '}';
     }
-    
-    
-    
 }
