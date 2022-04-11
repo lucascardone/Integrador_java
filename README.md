@@ -21,3 +21,4 @@ Works well for now...
 - [x] Class "AccionesImplementService" -> change all getDistancia for the method "distancia"
 - [x] Class "JarvisImplementService" -> distanciaRecorrida is the replace for the variable "metros"
 - [x] Radar 3D added :)
+- [x] Method "distancia" -> improved
