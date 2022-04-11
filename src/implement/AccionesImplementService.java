@@ -162,6 +162,24 @@ public class AccionesImplementService {
 
     }
 
+    public void daniosEnemigos(Objetos objeto) {
+        switch (objeto.getNvlResis()) {
+            case HRA:
+                if (objeto.getSalud() < 50) {
+                    objeto.setSalud(0);
+                    break;
+                }
+                objeto.setSalud(objeto.getSalud() - 33);
+                break;
+            case HRB:
+                objeto.setSalud(objeto.getSalud() - 50);
+                break;
+            case HRC:
+                objeto.setSalud(objeto.getSalud() - 50);
+                break;
+        }
+    }
+
     public void disparar(Armadura mark3, ArrayList<Objetos> objetos) {
 
         System.out.println("DISPARAR");
@@ -175,8 +193,13 @@ public class AccionesImplementService {
         if (mark3.getGenerador()) {
             for (Objetos objeto : objetos) {
                 if (objeto.getHostil() && objeto.getDistancia() < 5000) {
-                    System.out.println("Enemigo " + objeto.getNombre() + " eliminado");
-                    objetos.remove(objeto);
+                    daniosEnemigos(objeto);
+                    if (objeto.getSalud() == 0) {
+                        System.out.println("Enemigo " + objeto.getNombre() + " eliminado");
+                        objetos.remove(objeto);
+                    } else {
+                        System.out.println("Enemigo " + objeto.getNombre() + " ha resistido, vida restante: " + objeto.getSalud());
+                    }
                     break;
                 } else if (objeto.getHostil() && objeto.getDistancia() > 5000) {
                     System.out.println("Objetivo: " + objeto.getNombre() + " fuera de alcance");
@@ -189,9 +212,14 @@ public class AccionesImplementService {
                         System.out.println(Constant.accionDenegada);
                         break;
                     } else {
-                        System.out.println("Enemigo " + objeto.getNombre() + " eliminado");
+                        daniosEnemigos(objeto);
                         mark3.getGuantes().setEnergia(mark3.getNvlEnergia() - 10);
-                        objetos.remove(objeto);
+                        if (objeto.getSalud() == 0) {
+                            System.out.println("Enemigo " + objeto.getNombre() + " eliminado");
+                            objetos.remove(objeto);
+                        } else {
+                            System.out.println("Enemigo " + objeto.getNombre() + " ha resistido, vida restante: " + objeto.getSalud());
+                        }
                         break;
                     }
                 } else if (objeto.getHostil() && objeto.getDistancia() > 5000) {
@@ -266,14 +294,13 @@ public class AccionesImplementService {
                         System.out.println(objeto + " eliminado");
                         objetos.remove(objeto);
                         mark3.getCasco().setEnergia(mark3.getCasco().getEnergia() - 20);
-                        mark3.getGuantes().setEnergia(mark3.getNvlEnergia() - 10);
+                        mark3.getGuantes().setEnergia(mark3.getNvlEnergia() - 25);
                         bandera = true;
                         break;
                     }
                 }
             }
         }
-        System.out.println("HOLI");
         if (!bandera && enemigo != null) {
             System.out.println("El enemigo: " + enemigo + " no se ha encontrado");
         }
