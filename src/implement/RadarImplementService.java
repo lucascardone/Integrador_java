@@ -6,7 +6,6 @@
 
 package implement;
 
-import entity.Armadura;
 import entity.Objetos;
 import enums.NvlResistencia;
 import java.util.ArrayList;
@@ -28,13 +27,14 @@ public class RadarImplementService {
         return objetos;
     }
     
-    public Integer distancia(Armadura mark3, Objetos objeto){
-        Integer x = 0 - objeto.getPosicX() - 0 - mark3.getPosicX();
-        x = (int)(Math.pow(x, 2));        
-        Integer y = 0-mark3.getPosicY() - 0-objeto.getPosicY();
-        y = (int)(Math.pow(y, 2));
-        Integer z = 0-mark3.getPosicZ() - 0-objeto.getPosicZ();
-        z = (int)(Math.pow(z, 2));
-        return (int)(Math.sqrt(x + y + z));
+   
+    public Integer distancia(Integer x1, Integer y1, Integer z1, Integer x2, Integer y2, Integer z2){
+        Integer x3 = 0 - x1 - 0 - x2;
+        x3 = (int)(Math.pow(x3, 2));
+        Integer y3 = 0 - y1 - 0 - y2;
+        y3 = (int)(Math.pow(y3, 2));
+        Integer z3 = 0 - z1 - 0 - z2;
+        z3 = (int)(Math.pow(z3, 2));
+        return (int)(Math.sqrt(x3 + y3 + z3));
     }
 }
