@@ -14,3 +14,4 @@ Works well for now...
 - [x] Package "constants" Class "Constant" -> added 
 - [x] Class "Objetos" -> attribute "nvlResis" added
 - [x] Class "Objetos -> attribute "salud" added
+- [x] Class "AccionesImplementService" -> enemies resist shots according to their hardness
