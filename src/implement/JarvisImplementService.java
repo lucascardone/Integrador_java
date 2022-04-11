@@ -29,7 +29,7 @@ public class JarvisImplementService {
 
     public void start(Armadura mark3) throws IOException {
         boolean bandera = false;
-        int metros = 0, aux = 0, i = 0;
+        int aux = 0, i = 0;
         String opcion;
         ArrayList<Objetos> objetos = new ArrayList();
         do {
@@ -37,28 +37,28 @@ public class JarvisImplementService {
                 objetos = radServ.pulsoRadar();
             }
             System.out.println("Radar activado");
-            System.out.println("Numero de hostiles: " + hostiles(objetos));
+            System.out.println("Numero de hostiles: " + hostiles(objetos)+"\n");
             switch (opcionJarvis()) {
                 case 1:
-                    metros += accServ.caminar(mark3);
+                    mark3.setDistanciaRecorrida(accServ.caminar(mark3) + mark3.getDistanciaRecorrida());
                     if (hostiles(objetos) == 0) {
                         objetos = radServ.pulsoRadar();
                     }
                     break;
                 case 2:
-                    metros += accServ.correr(mark3);
+                    mark3.setDistanciaRecorrida(accServ.correr(mark3) + mark3.getDistanciaRecorrida());
                     if (hostiles(objetos) == 0) {
                         objetos = radServ.pulsoRadar();
                     }
                     break;
                 case 3:
-                    metros += accServ.propulsar(mark3);
+                    mark3.setDistanciaRecorrida(accServ.propulsar(mark3) + mark3.getDistanciaRecorrida());
                     if (hostiles(objetos) == 0) {
                         objetos = radServ.pulsoRadar();
                     }
                     break;
                 case 4:
-                    metros += accServ.volar(mark3);
+                    mark3.setDistanciaRecorrida(accServ.volar(mark3) + mark3.getDistanciaRecorrida());
                     if (hostiles(objetos) == 0) {
                         objetos = radServ.pulsoRadar();
                     }
@@ -95,7 +95,7 @@ public class JarvisImplementService {
             //Luego de acciones
             i++;
             if (0 == i % 2) {
-                if (aux == metros) {
+                if (aux == mark3.getDistanciaRecorrida()) {
                     recibiendoDanos(mark3);
                 }
                 ataqueEnemigo(objetos, mark3);
@@ -111,7 +111,7 @@ public class JarvisImplementService {
                 generadorApagado(mark3);
             }
             mostrarEstado(mark3);
-            aux = metros;
+            aux = mark3.getDistanciaRecorrida();
         } while (mark3.getNvlSalud() > 0 && !bandera);
     }
 
@@ -201,13 +201,15 @@ public class JarvisImplementService {
     }
 
     public void mostrarEstado(Armadura mark3) {
-        System.out.println("Estado del Mark III");
+        System.out.println("Estado del Mark III\n");
         System.out.println("Salud: " + mark3.getNvlSalud());
         System.out.println("Energia");
         System.out.println("Armadura: " + mark3.getNvlEnergia() + "\n"
                 + "Botas: " + mark3.getBotas().getEnergia() + "\n"
                 + "Guantes: " + mark3.getGuantes().getEnergia() + "\n"
                 + "Casco: " + mark3.getCasco().getEnergia() + "\n"
-                + "Generador: " + mark3.getGenerador() + "\n");
+                + "Generador: " + mark3.getGenerador() + "\n"
+                + "Posicion: " + mark3.getPosicX() + ", " + mark3.getPosicY() + ", " + mark3.getPosicZ() + "\n"
+                + "Distancia recorrida total: " + mark3.getDistanciaRecorrida());
     }
 }

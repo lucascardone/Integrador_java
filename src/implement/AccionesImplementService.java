@@ -17,6 +17,7 @@ import java.util.ArrayList;
 public class AccionesImplementService {
 
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    RadarImplementService radServ = new RadarImplementService();
 
     public Integer caminar(Armadura mark3) throws IOException {
 
@@ -192,7 +193,7 @@ public class AccionesImplementService {
     public void comprobarDisparo(ArrayList<Objetos> objetos, Armadura mark3) {
         if (mark3.getGenerador()) {
             for (Objetos objeto : objetos) {
-                if (objeto.getHostil() && objeto.getDistancia() < 5000) {
+                if (objeto.getHostil() && radServ.distancia(mark3, objeto) < 5000) {
                     daniosEnemigos(objeto);
                     if (objeto.getSalud() == 0) {
                         System.out.println("Enemigo " + objeto.getNombre() + " eliminado");
@@ -201,13 +202,13 @@ public class AccionesImplementService {
                         System.out.println("Enemigo " + objeto.getNombre() + " ha resistido, vida restante: " + objeto.getSalud());
                     }
                     break;
-                } else if (objeto.getHostil() && objeto.getDistancia() > 5000) {
+                } else if (objeto.getHostil() && radServ.distancia(mark3, objeto) > 5000) {
                     System.out.println("Objetivo: " + objeto.getNombre() + " fuera de alcance");
                 }
             }
         } else {
             for (Objetos objeto : objetos) {
-                if (objeto.getHostil() && objeto.getDistancia() < 5000) {
+                if (objeto.getHostil() && radServ.distancia(mark3, objeto) < 5000) {
                     if (mark3.getGuantes().getEnergia() < 10) {
                         System.out.println(Constant.accionDenegada);
                         break;
@@ -222,7 +223,7 @@ public class AccionesImplementService {
                         }
                         break;
                     }
-                } else if (objeto.getHostil() && objeto.getDistancia() > 5000) {
+                } else if (objeto.getHostil() && radServ.distancia(mark3, objeto) > 5000) {
                     System.out.println("Objetivo: " + objeto.getNombre() + " fuera de alcance");
                 }
             }
@@ -271,6 +272,10 @@ public class AccionesImplementService {
             for (Objetos objeto : objetos) {
                 if (objeto.getNombre().equalsIgnoreCase(enemigo)) {
                     System.out.println(objeto + " eliminado");
+                    mark3.setPosicX(objeto.getPosicX());
+                    mark3.setPosicY(objeto.getPosicY());
+                    mark3.setPosicZ(objeto.getPosicZ());
+                    mark3.setDistanciaRecorrida((radServ.distancia(mark3, objeto))+mark3.getDistanciaRecorrida());
                     objetos.remove(objeto);
                     bandera = true;
                     break;
@@ -292,6 +297,10 @@ public class AccionesImplementService {
                         break;
                     } else {
                         System.out.println(objeto + " eliminado");
+                        mark3.setPosicX(objeto.getPosicX());
+                        mark3.setPosicY(objeto.getPosicY());
+                        mark3.setPosicZ(objeto.getPosicZ());
+                        mark3.setDistanciaRecorrida((radServ.distancia(mark3, objeto))+mark3.getDistanciaRecorrida());
                         objetos.remove(objeto);
                         mark3.getCasco().setEnergia(mark3.getCasco().getEnergia() - 20);
                         mark3.getGuantes().setEnergia(mark3.getNvlEnergia() - 25);

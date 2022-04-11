@@ -13,20 +13,49 @@ public class Objetos {
 
     
     private Boolean hostil;
-    private Integer distancia;
     private String nombre;
     private NvlResistencia nvlResis;
     private Integer salud;
+    
+    private Integer posicX;
+    private Integer posicY;
+    private Integer posicZ;
 
     public Objetos() {
     }
 
-    public Objetos(Boolean hostil, Integer distancia, String nombre, NvlResistencia nvlResis, Integer salud) {
+    public Objetos(Boolean hostil, String nombre, NvlResistencia nvlResis, Integer salud, Integer posicX, Integer posicY, Integer posicZ) {
         this.hostil = hostil;
-        this.distancia = distancia;
         this.nombre = nombre;
         this.nvlResis = nvlResis;
         this.salud = salud;
+        this.posicX = posicX;
+        this.posicY = posicY;
+        this.posicZ = posicZ;
+    }
+
+    public Integer getPosicX() {
+        return posicX;
+    }
+
+    public void setPosicX(Integer posicX) {
+        this.posicX = posicX;
+    }
+
+    public Integer getPosicY() {
+        return posicY;
+    }
+
+    public void setPosicY(Integer posicY) {
+        this.posicY = posicY;
+    }
+
+    public Integer getPosicZ() {
+        return posicZ;
+    }
+
+    public void setPosicZ(Integer posicZ) {
+        this.posicZ = posicZ;
     }
 
     public Integer getSalud() {
@@ -53,14 +82,6 @@ public class Objetos {
         this.nombre = nombre;
     }
 
-    public Integer getDistancia() {
-        return distancia;
-    }
-
-    public void setDistancia(Integer distancia) {
-        this.distancia = distancia;
-    }
-
     public Boolean getHostil() {
         return hostil;
     }
@@ -71,6 +92,8 @@ public class Objetos {
 
     @Override
     public String toString() {
-        return "Objetos{" + "hostil=" + hostil + ", distancia=" + distancia + ", nombre=" + nombre + ", nvlResis=" + nvlResis + ", salud=" + salud + '}';
+        return "Objetos{" + "hostil=" + hostil + ", nombre=" + nombre + ", nvlResis=" + nvlResis + ", salud=" + salud + ", X=" + posicX + ", Y=" + posicY + ", Z=" + posicZ + '}';
     }
+
+    
 }

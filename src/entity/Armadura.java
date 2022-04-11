@@ -23,20 +23,61 @@ public class Armadura {
     private Integer nvlSalud;
     private Integer nvlEnergia;
     private Boolean generador;
+    
+    private Integer distanciaRecorrida;
+    private Integer posicX;
+    private Integer posicY;
+    private Integer posicZ;
 
     public Armadura() {
     }
 
-    public Armadura(Colores colorPrimario, Colores colorSecundario, Botas botas, Guantes guantes, Casco casco, Integer nvlSalud, Integer nvlEnergia, Boolean generador, NvlResistencia nvlResistencia) {
+    public Armadura(Colores colorPrimario, Colores colorSecundario, NvlResistencia nvlResistencia, Botas botas, Guantes guantes, Casco casco, Integer nvlSalud, Integer nvlEnergia, Boolean generador, Integer distanciaRecorrida, Integer posicX, Integer posicY, Integer posicZ) {
         this.colorPrimario = colorPrimario;
         this.colorSecundario = colorSecundario;
+        this.nvlResistencia = nvlResistencia;
         this.botas = botas;
         this.guantes = guantes;
         this.casco = casco;
         this.nvlSalud = nvlSalud;
         this.nvlEnergia = nvlEnergia;
         this.generador = generador;
-        this.nvlResistencia = nvlResistencia;
+        this.distanciaRecorrida = distanciaRecorrida;
+        this.posicX = posicX;
+        this.posicY = posicY;
+        this.posicZ = posicZ;
+    }
+
+    public Integer getDistanciaRecorrida() {
+        return distanciaRecorrida;
+    }
+
+    public void setDistanciaRecorrida(Integer distanciaRecorrida) {
+        this.distanciaRecorrida = distanciaRecorrida;
+    }
+
+    public Integer getPosicX() {
+        return posicX;
+    }
+
+    public void setPosicX(Integer posicX) {
+        this.posicX = posicX;
+    }
+
+    public Integer getPosicY() {
+        return posicY;
+    }
+
+    public void setPosicY(Integer posicY) {
+        this.posicY = posicY;
+    }
+
+    public Integer getPosicZ() {
+        return posicZ;
+    }
+
+    public void setPosicZ(Integer posicZ) {
+        this.posicZ = posicZ;
     }
 
     public NvlResistencia getNvlResistencia() {
@@ -127,6 +168,10 @@ public class Armadura {
         setGenerador(Boolean.TRUE);
         setNvlEnergia(100);
         setNvlSalud(100);
+        setPosicX(0);
+        setPosicY(0);
+        setPosicZ(0);
+        setDistanciaRecorrida(0);
     }
 
 }
