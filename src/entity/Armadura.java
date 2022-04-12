@@ -173,5 +173,55 @@ public class Armadura {
         setPosicZ(0);
         setDistanciaRecorrida(0);
     }
+    
+    public void generadorApagado() {
+        switch (getNvlResistencia()) {
+            case HRA:
+                setNvlSalud(getNvlSalud() + 6);
+                if (getNvlSalud() >= 90) {
+                    setNvlSalud(100);
+                }
+                break;
+            case HRB:
+                setNvlSalud(getNvlSalud() + 10);
+                if (getNvlSalud() >= 90) {
+                    setNvlSalud(100);
+                }
+                break;
+            case HRC:
+                setNvlSalud(getNvlSalud() + 20);
+                if (getNvlSalud() >= 90) {
+                    setNvlSalud(100);
+                }
+                break;
+        }
+    }
+
+    public void recibiendoDanos() {
+        switch (getNvlResistencia()) {
+            case HRA:
+                setNvlSalud(getNvlSalud() - 6);
+                break;
+            case HRB:
+                setNvlSalud(getNvlSalud() - 10);
+                break;
+            case HRC:
+                setNvlSalud(getNvlSalud() - 20);
+                break;
+        }
+    }
+    
+    public void mostrarEstado() {
+        System.out.println("Estado del Mark III\n");
+        System.out.println("Salud: " + getNvlSalud());
+        System.out.println("Energia");
+        System.out.println("Armadura: " + getNvlEnergia() + "\n"
+                + "Botas: " + getBotas().getEnergia() + "\n"
+                + "Guantes: " + getGuantes().getEnergia() + "\n"
+                + "Casco: " + getCasco().getEnergia() + "\n"
+                + "Generador: " + getGenerador() + "\n"
+                + "Posicion: " + getPosicX() + ", " + getPosicY() + ", " + getPosicZ() + "\n"
+                + "Distancia recorrida total: " + getDistanciaRecorrida());
+    }
 
 }

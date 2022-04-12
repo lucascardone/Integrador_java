@@ -23,7 +23,7 @@ public class JarvisImplementService {
         Armadura mark3 = new Armadura();
         mark3.iniciar();
         System.out.println("Mark III iniciado correctamente");
-        mostrarEstado(mark3);
+        mark3.mostrarEstado();
         start(mark3);
     }
 
@@ -96,11 +96,11 @@ public class JarvisImplementService {
             i++;
             if (0 == i % 2) {
                 if (aux == mark3.getDistanciaRecorrida()) {
-                    recibiendoDanos(mark3);
+                    mark3.recibiendoDanos();
                 }
                 ataqueEnemigo(objetos, mark3);
                 if (mark3.getGenerador()) {
-                    recibiendoDanos(mark3);
+                    mark3.recibiendoDanos();
                 }
             }
             if (mark3.getGenerador()) {
@@ -108,48 +108,11 @@ public class JarvisImplementService {
                 mark3.getBotas().setEnergia(100);
                 mark3.getGuantes().setEnergia(100);
             } else if (!mark3.getGenerador()) {
-                generadorApagado(mark3);
+                mark3.generadorApagado();
             }
-            mostrarEstado(mark3);
+            mark3.mostrarEstado();
             aux = mark3.getDistanciaRecorrida();
         } while (mark3.getNvlSalud() > 0 && !bandera);
-    }
-
-    public void generadorApagado(Armadura mark3) {
-        switch (mark3.getNvlResistencia()) {
-            case HRA:
-                mark3.setNvlSalud(mark3.getNvlSalud() + 6);
-                if (mark3.getNvlSalud() >= 90) {
-                    mark3.setNvlSalud(100);
-                }
-                break;
-            case HRB:
-                mark3.setNvlSalud(mark3.getNvlSalud() + 10);
-                if (mark3.getNvlSalud() >= 90) {
-                    mark3.setNvlSalud(100);
-                }
-                break;
-            case HRC:
-                mark3.setNvlSalud(mark3.getNvlSalud() + 20);
-                if (mark3.getNvlSalud() >= 90) {
-                    mark3.setNvlSalud(100);
-                }
-                break;
-        }
-    }
-
-    public void recibiendoDanos(Armadura mark3) {
-        switch (mark3.getNvlResistencia()) {
-            case HRA:
-                mark3.setNvlSalud(mark3.getNvlSalud() - 6);
-                break;
-            case HRB:
-                mark3.setNvlSalud(mark3.getNvlSalud() - 10);
-                break;
-            case HRC:
-                mark3.setNvlSalud(mark3.getNvlSalud() - 20);
-                break;
-        }
     }
 
     public void ataqueEnemigo(ArrayList<Objetos> objetos, Armadura mark3) {
@@ -158,7 +121,7 @@ public class JarvisImplementService {
             if (objeto.getHostil()) {
                 ataque = (int) (Math.random() * 100);
                 if (ataque <= 20) {
-                    recibiendoDanos(mark3);
+                    mark3.recibiendoDanos();
                 }
             }
         }
@@ -199,17 +162,5 @@ public class JarvisImplementService {
         } while (opcion < 1 || opcion > 9);
         return opcion;
     }
-
-    public void mostrarEstado(Armadura mark3) {
-        System.out.println("Estado del Mark III\n");
-        System.out.println("Salud: " + mark3.getNvlSalud());
-        System.out.println("Energia");
-        System.out.println("Armadura: " + mark3.getNvlEnergia() + "\n"
-                + "Botas: " + mark3.getBotas().getEnergia() + "\n"
-                + "Guantes: " + mark3.getGuantes().getEnergia() + "\n"
-                + "Casco: " + mark3.getCasco().getEnergia() + "\n"
-                + "Generador: " + mark3.getGenerador() + "\n"
-                + "Posicion: " + mark3.getPosicX() + ", " + mark3.getPosicY() + ", " + mark3.getPosicZ() + "\n"
-                + "Distancia recorrida total: " + mark3.getDistanciaRecorrida());
-    }
+    
 }

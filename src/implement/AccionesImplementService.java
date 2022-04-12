@@ -201,6 +201,8 @@ public class AccionesImplementService {
 
     }
 
+    // Pasa a entidades
+    
     public void daniosEnemigos(Objetos objeto) {
         switch (objeto.getNvlResis()) {
             case HRA:
