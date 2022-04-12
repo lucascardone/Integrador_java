@@ -95,5 +95,22 @@ public class Objetos {
         return "Objetos{" + "hostil=" + hostil + ", nombre=" + nombre + ", nvlResis=" + nvlResis + ", salud=" + salud + ", X=" + posicX + ", Y=" + posicY + ", Z=" + posicZ + '}';
     }
 
+    public void daniosEnemigos() {
+        switch (getNvlResis()) {
+            case HRA:
+                if (getSalud() < 50) {
+                    setSalud(0);
+                    break;
+                }
+                setSalud(getSalud() - 33);
+                break;
+            case HRB:
+                setSalud(getSalud() - 50);
+                break;
+            case HRC:
+                setSalud(getSalud() - 50);
+                break;
+        }
+    }
     
 }

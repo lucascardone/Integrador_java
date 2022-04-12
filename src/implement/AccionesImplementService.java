@@ -203,23 +203,7 @@ public class AccionesImplementService {
 
     // Pasa a entidades
     
-    public void daniosEnemigos(Objetos objeto) {
-        switch (objeto.getNvlResis()) {
-            case HRA:
-                if (objeto.getSalud() < 50) {
-                    objeto.setSalud(0);
-                    break;
-                }
-                objeto.setSalud(objeto.getSalud() - 33);
-                break;
-            case HRB:
-                objeto.setSalud(objeto.getSalud() - 50);
-                break;
-            case HRC:
-                objeto.setSalud(objeto.getSalud() - 50);
-                break;
-        }
-    }
+    
 
     public void disparar(Armadura mark3, ArrayList<Objetos> objetos) {
 
@@ -234,7 +218,7 @@ public class AccionesImplementService {
         if (mark3.getGenerador()) {
             for (Objetos objeto : objetos) {
                 if (objeto.getHostil() && radServ.distancia(mark3.getPosicX(), mark3.getPosicY(), mark3.getPosicZ(), objeto.getPosicX(), objeto.getPosicY(), objeto.getPosicZ()) < 5000) {
-                    daniosEnemigos(objeto);
+                    objeto.daniosEnemigos();
                     if (objeto.getSalud() == 0) {
                         System.out.println("Enemigo " + objeto.getNombre() + " eliminado");
                         objetos.remove(objeto);
@@ -253,7 +237,7 @@ public class AccionesImplementService {
                         System.out.println(Constant.accionDenegada);
                         break;
                     } else {
-                        daniosEnemigos(objeto);
+                        objeto.daniosEnemigos();
                         mark3.getGuantes().setEnergia(mark3.getNvlEnergia() - 10);
                         if (objeto.getSalud() == 0) {
                             System.out.println("Enemigo " + objeto.getNombre() + " eliminado");
