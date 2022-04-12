@@ -19,11 +19,31 @@ public class AccionesImplementService {
     BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     RadarImplementService radServ = new RadarImplementService();
 
+    public Integer comprobarCoor() {
+        Integer coor = null;
+        boolean bandera = false;
+        do {
+            try {
+                System.out.println("Ingrese la coordenada marcada");
+                coor = Integer.parseInt(br.readLine());
+                bandera = true;
+            } catch (Exception e) {
+                System.out.println("Dato invalido");
+            }
+        } while (!bandera);
+        return coor;
+    }
+
     public Integer caminar(Armadura mark3) throws IOException {
 
         System.out.println("CAMINAR");
-        int metros = comprobarMetros();
-
+        System.out.println("Coordenada X:");
+        Integer x = comprobarCoor();
+        System.out.println("Coordenada Z:");
+        Integer z = comprobarCoor();
+        Integer metros = radServ.distancia(mark3.getPosicX(), null, mark3.getPosicZ(), x, null, z);
+        mark3.setPosicX(x);
+        mark3.setPosicZ(z);
         if (mark3.getGenerador()) {
             return metros;
         } else {
@@ -56,7 +76,13 @@ public class AccionesImplementService {
     public Integer correr(Armadura mark3) throws IOException {
 
         System.out.println("CORRER");
-        int metros = comprobarMetros();
+        System.out.println("Coordenada X:");
+        Integer x = comprobarCoor();
+        System.out.println("Coordenada Z:");
+        Integer z = comprobarCoor();
+        Integer metros = radServ.distancia(mark3.getPosicX(), null, mark3.getPosicZ(), x, null, z);
+        mark3.setPosicX(x);
+        mark3.setPosicZ(z);
 
         if (mark3.getGenerador()) {
             return metros;
@@ -90,7 +116,10 @@ public class AccionesImplementService {
     public Integer propulsar(Armadura mark3) throws IOException {
 
         System.out.println("PROPULSAR");
-        int metros = comprobarMetros();
+        System.out.println("Coordenada Y:");
+        Integer y = comprobarCoor();
+        Integer metros = radServ.distancia(null, mark3.getPosicY(), null, null, y, null);
+        mark3.setPosicY(y);
 
         if (mark3.getGenerador()) {
             return metros;
@@ -128,7 +157,16 @@ public class AccionesImplementService {
     public Integer volar(Armadura mark3) throws IOException {
 
         System.out.println("VOLAR");
-        int metros = comprobarMetros();
+        System.out.println("Coordenada X:");
+        Integer x = comprobarCoor();
+        System.out.println("Coordenada Z:");
+        Integer z = comprobarCoor();
+        System.out.println("Coordenada Y:");
+        Integer y = comprobarCoor();
+        Integer metros = radServ.distancia(mark3.getPosicX(),mark3.getPosicY(),mark3.getPosicZ() , x, y, z);
+        mark3.setPosicX(x);
+        mark3.setPosicY(y);
+        mark3.setPosicZ(z);
 
         if (mark3.getGenerador()) {
             return metros;
@@ -193,7 +231,7 @@ public class AccionesImplementService {
     public void comprobarDisparo(ArrayList<Objetos> objetos, Armadura mark3) {
         if (mark3.getGenerador()) {
             for (Objetos objeto : objetos) {
-                if (objeto.getHostil() && radServ.distancia(mark3.getPosicX(),mark3.getPosicY(),mark3.getPosicZ(), objeto.getPosicX(), objeto.getPosicY(), objeto.getPosicZ()) < 5000) {
+                if (objeto.getHostil() && radServ.distancia(mark3.getPosicX(), mark3.getPosicY(), mark3.getPosicZ(), objeto.getPosicX(), objeto.getPosicY(), objeto.getPosicZ()) < 5000) {
                     daniosEnemigos(objeto);
                     if (objeto.getSalud() == 0) {
                         System.out.println("Enemigo " + objeto.getNombre() + " eliminado");
@@ -202,13 +240,13 @@ public class AccionesImplementService {
                         System.out.println("Enemigo " + objeto.getNombre() + " ha resistido, vida restante: " + objeto.getSalud());
                     }
                     break;
-                } else if (objeto.getHostil() && radServ.distancia(mark3.getPosicX(),mark3.getPosicY(),mark3.getPosicZ(), objeto.getPosicX(), objeto.getPosicY(), objeto.getPosicZ()) > 5000) {
+                } else if (objeto.getHostil() && radServ.distancia(mark3.getPosicX(), mark3.getPosicY(), mark3.getPosicZ(), objeto.getPosicX(), objeto.getPosicY(), objeto.getPosicZ()) > 5000) {
                     System.out.println("Objetivo: " + objeto.getNombre() + " fuera de alcance");
                 }
             }
         } else {
             for (Objetos objeto : objetos) {
-                if (objeto.getHostil() && radServ.distancia(mark3.getPosicX(),mark3.getPosicY(),mark3.getPosicZ(), objeto.getPosicX(), objeto.getPosicY(), objeto.getPosicZ()) < 5000) {
+                if (objeto.getHostil() && radServ.distancia(mark3.getPosicX(), mark3.getPosicY(), mark3.getPosicZ(), objeto.getPosicX(), objeto.getPosicY(), objeto.getPosicZ()) < 5000) {
                     if (mark3.getGuantes().getEnergia() < 10) {
                         System.out.println(Constant.accionDenegada);
                         break;
@@ -223,7 +261,7 @@ public class AccionesImplementService {
                         }
                         break;
                     }
-                } else if (objeto.getHostil() && radServ.distancia(mark3.getPosicX(),mark3.getPosicY(),mark3.getPosicZ(), objeto.getPosicX(), objeto.getPosicY(), objeto.getPosicZ()) > 5000) {
+                } else if (objeto.getHostil() && radServ.distancia(mark3.getPosicX(), mark3.getPosicY(), mark3.getPosicZ(), objeto.getPosicX(), objeto.getPosicY(), objeto.getPosicZ()) > 5000) {
                     System.out.println("Objetivo: " + objeto.getNombre() + " fuera de alcance");
                 }
             }
@@ -275,7 +313,7 @@ public class AccionesImplementService {
                     mark3.setPosicX(objeto.getPosicX());
                     mark3.setPosicY(objeto.getPosicY());
                     mark3.setPosicZ(objeto.getPosicZ());
-                    mark3.setDistanciaRecorrida((radServ.distancia(mark3.getPosicX(),mark3.getPosicY(),mark3.getPosicZ(), objeto.getPosicX(), objeto.getPosicY(), objeto.getPosicZ()))+mark3.getDistanciaRecorrida());
+                    mark3.setDistanciaRecorrida((radServ.distancia(mark3.getPosicX(), mark3.getPosicY(), mark3.getPosicZ(), objeto.getPosicX(), objeto.getPosicY(), objeto.getPosicZ())) + mark3.getDistanciaRecorrida());
                     objetos.remove(objeto);
                     bandera = true;
                     break;
@@ -300,7 +338,7 @@ public class AccionesImplementService {
                         mark3.setPosicX(objeto.getPosicX());
                         mark3.setPosicY(objeto.getPosicY());
                         mark3.setPosicZ(objeto.getPosicZ());
-                        mark3.setDistanciaRecorrida((radServ.distancia(mark3.getPosicX(),mark3.getPosicY(),mark3.getPosicZ(), objeto.getPosicX(), objeto.getPosicY(), objeto.getPosicZ()))+mark3.getDistanciaRecorrida());
+                        mark3.setDistanciaRecorrida((radServ.distancia(mark3.getPosicX(), mark3.getPosicY(), mark3.getPosicZ(), objeto.getPosicX(), objeto.getPosicY(), objeto.getPosicZ())) + mark3.getDistanciaRecorrida());
                         objetos.remove(objeto);
                         mark3.getCasco().setEnergia(mark3.getCasco().getEnergia() - 20);
                         mark3.getGuantes().setEnergia(mark3.getNvlEnergia() - 25);
