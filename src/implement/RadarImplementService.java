@@ -49,16 +49,4 @@ public class RadarImplementService {
         return 0;
     }
 
-    public Integer distanciaMejorada(Integer x1, Integer y1, Integer z1, Integer x2, Integer y2, Integer z2) {
-        Integer x3, y3, z3;
-        
-        x3 = 0 - x1 - 0 - x2;
-        x3 = (int) (Math.pow(x3, 2));
-        y3 = 0 - y1 - 0 - y2;
-        y3 = (int) (Math.pow(y3, 2));
-        z3 = 0 - z1 - 0 - z2;
-        z3 = (int) (Math.pow(z3, 2));
-        
-        return (int) (Math.sqrt(x3 + y3 + z3));
-    }
 }
