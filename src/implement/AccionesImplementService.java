@@ -38,7 +38,7 @@ public class AccionesImplementService {
         Integer x = comprobarCoor();
         System.out.println("Coordenada Z:");
         Integer z = comprobarCoor();
-        Integer metros = radServ.distancia(mark3.getPosicX(), null, mark3.getPosicZ(), x, null, z);
+        Integer metros = radServ.distancia(mark3.getPosicX(), 0, mark3.getPosicZ(), x, 0, z);
         mark3.setPosicX(x);
         mark3.setPosicZ(z);
         if (mark3.getGenerador()) {
@@ -77,7 +77,7 @@ public class AccionesImplementService {
         Integer x = comprobarCoor();
         System.out.println("Coordenada Z:");
         Integer z = comprobarCoor();
-        Integer metros = radServ.distancia(mark3.getPosicX(), null, mark3.getPosicZ(), x, null, z);
+        Integer metros = radServ.distancia(mark3.getPosicX(), 0, mark3.getPosicZ(), x, 0, z);
         mark3.setPosicX(x);
         mark3.setPosicZ(z);
 
@@ -115,7 +115,7 @@ public class AccionesImplementService {
         System.out.println("PROPULSAR");
         System.out.println("Coordenada Y:");
         Integer y = comprobarCoor();
-        Integer metros = radServ.distancia(null, mark3.getPosicY(), null, null, y, null);
+        Integer metros = radServ.distancia(null, mark3.getPosicY(), 0, 0, y, 0);
         mark3.setPosicY(y);
 
         if (mark3.getGenerador()) {
