@@ -1,8 +1,5 @@
 /*
-caminar
-correr
-propulsar
-volar
+
  */
 package implement;
 
@@ -201,10 +198,6 @@ public class AccionesImplementService {
 
     }
 
-    // Pasa a entidades
-    
-    
-
     public void disparar(Armadura mark3, ArrayList<Objetos> objetos) {
 
         System.out.println("DISPARAR");
@@ -271,17 +264,15 @@ public class AccionesImplementService {
     }
 
     public String consejo() {
-        String[] notas = new String[6];
-        notas[0] = "Nota: El generador si esta prendido mucho tiempo te hara daño, pero no consumiras energia alguna a la hora de hacer acciones...";
-        notas[1] = "Nota: Mantente en movimiento para evitar misiles de enemigos";
-        notas[2] = "Nota: Si escribes el nombre de tu objetivo Jarvis evaluara lo que debe hacer";
-        notas[3] = "Nota: La posibilidad de que un enemigo te golpee es del 100% si no te has movido y reduce a un 20% si te has movido.";
-        notas[4] = "Nota: Dependiendo el nivel de dureza de tu armadura mas daño te causaran los enemigos";
-        notas[5] = "Nota: Niveles de dureza\n"
-                + "HRA: 15 Golpes.\n"
-                + "HRB: 10 Golpes.\n"
-                + "HRC: 5 Golpes.\n";
-        return notas[(int) (Math.random() * 5)];
+        String[] notas = new String[7];
+        notas[0] = Constant.Nota0;
+        notas[1] = Constant.Nota1;
+        notas[2] = Constant.Nota2;
+        notas[3] = Constant.Nota3;
+        notas[4] = Constant.Nota4;
+        notas[5] = Constant.Nota5;
+        notas[6] = Constant.Nota6;
+        return notas[(int) (Math.random() * 6)];
     }
 
     public void consultarDistancia(String enemigo, ArrayList<Objetos> objetos, Armadura mark3) {
