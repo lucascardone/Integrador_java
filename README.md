@@ -6,6 +6,7 @@ Program that simulates the use of an Iron Man armor
 - [x] Improve enemies
 - [ ] Order code
 - [ ] Add Testing
+- [ ] Imporve Interface
 ## Observations
 Works well for now...
 ## Updates
