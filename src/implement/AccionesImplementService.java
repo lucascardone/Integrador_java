@@ -115,7 +115,7 @@ public class AccionesImplementService {
         System.out.println("PROPULSAR");
         System.out.println("Coordenada Y:");
         Integer y = comprobarCoor();
-        Integer metros = radServ.distancia(null, mark3.getPosicY(), 0, 0, y, 0);
+        Integer metros = radServ.distancia(0, mark3.getPosicY(), 0, 0, y, 0);
         mark3.setPosicY(y);
 
         if (mark3.getGenerador()) {
