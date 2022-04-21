@@ -28,3 +28,4 @@ Works well for now...
 - [x] Methods "generadorApagado", "recibiendoDanos", "mostrarEstado" -> moved from JarvisImplementService to Armadura
 - [x] Method "daniosEnemigos" -> moved from AccionesImplementService to Objetos
 - [x] Class "Constant" -> added tips 
+- [x] Method "distancia" -> improved
