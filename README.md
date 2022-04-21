@@ -26,3 +26,4 @@ Works well for now...
 - [x] Class "AccionesImplementService" -> now use a more sophisticated method for position and distance traveled
 - [x] Methods "generadorApagado", "recibiendoDanos", "mostrarEstado" -> moved from JarvisImplementService to Armadura
 - [x] Method "daniosEnemigos" -> moved from AccionesImplementService to Objetos
+- [x] Class "Constant" -> added tips 
